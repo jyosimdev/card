@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="intro-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center cursor-pointer transition-opacity duration-1000">
+        <canvas id="particle-canvas" class="absolute inset-0"></canvas>
+        <h1 id="intro-text" class="text-4xl font-black text-white tracking-wider">CLICK ME</h1>
+    </div>
+
+    <div id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="pekpek (2).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div id="card-container" class="flex items-center justify-center min-h-screen relative">
+            
+            <div id="profile-card" class="glass-card w-full max-w-md mx-4 rounded-3xl p-8 text-white shadow-2xl flex flex-col items-center transition-all duration-500">
+                <div class="relative -mt-24">
+                    <img src="discord_fake_avatar_decorations_1758711931755.gif" alt="Main Profile Avatar" class="w-32 h-32 rounded-full shadow-lg object-cover" onerror="this.onerror=null; this.src='https://placehold.co/200x200/7c3aed/ffffff?text=Error'">
+                    <img src="decoration.gif" alt="Avatar Decoration" class="avatar-decoration pointer-events-none" onerror="this.style.display='none'">
+                </div>
+                
+                <div class="text-center mt-4 floating-text">
+                    <h1 class="text-4xl font-black tracking-wider">Pekky</h1>
+                    <p class="text-gray-300 text-lg mt-1">Faith and Glory</p>
+                </div>
+
+                <div class="mt-8 bg-black/20 hover:bg-black/30 transition-colors duration-300 rounded-2xl p-3 flex items-center gap-4 w-auto shadow-md">
+                    <img src="pekky.gif" alt="Sub Profile Avatar" class="w-12 h-12 rounded-full border-2 border-white/20 object-cover flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/100x100/34d399/1f2937?text=Error'">
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h2 class="font-bold text-lg leading-tight">og_pekky</h2>
+                            <div class="discord-tag">
+                                <img src="image.png" alt="Tag Icon" class="w-4 h-4">
+                                <span>WBBZ</span>
+                            </div>
+                            <div class="badge-container glow-red">
+                                <img src="valo.png" alt="Badge 1" class="w-5 h-5">
+                                <span class="tooltip">Valorant</span>
+                            </div>
+                            <div class="badge-container glow-red">
+                                <img src="youtuber.png" alt="Badge 2" class="w-5 h-5">
+                                <span class="tooltip">Youtuber - PEkHoM</span>
+                            </div>
+                            <div class="badge-container glow-blue">
+                                <img src="dev.png" alt="Badge 3" class="w-5 h-5">
+                                <span class="tooltip">Developer</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-tight mt-1">Woohoo! Babam Babam!</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 w-full bg-slate-800/70 p-4 rounded-2xl flex items-center gap-4">
+                    <img src="yashi.png" alt="Album Art" class="w-16 h-16 rounded-lg shadow-md object-cover" onerror="this.onerror=null; this.src='https://placehold.co/128x128/1db954/ffffff?text=Error'">
+                    <div class="flex-grow">
+                        <p class="font-bold">Doraemon</p>
+                        <p class="text-sm text-gray-400">Yashi</p>
+                        <div class="bg-gray-600/50 rounded-full h-1.5 mt-2">
+                            <div id="progress-bar" class="bg-green-400 h-1.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="expand-btn" class="action-button mt-6">
+                    Expand
+                </button>
+            </div>
+
+            <div id="about-card" class="glass-card w-full max-w-md mx-4 rounded-3xl p-8 text-white shadow-2xl flex-col items-center absolute transition-all duration-500 opacity-0 pointer-events-none hidden">
+                <h2 class="text-3xl font-black tracking-wider mb-6 text-center about-me-title">
+                    ✨ About Me
+                </h2>
+                <div class="text-left w-full text-gray-200 space-y-4 about-me-text">
+                   <p>
+                       Hey, I'm Pekky — <span class="highlight-cyan">developer</span> 🧑‍💻, <span class="highlight-green">gamer</span> 👾, and <span class="highlight-red">YouTuber</span> 📺, all rolled into one chaotic creative soul.
+                   </p>
+                   <p>
+                       I build <span class="highlight-purple">stuff that talks back</span> 🤖, run servers like a boss 💼, and crack jokes while debugging code at <span class="highlight-yellow">2AM</span> 🌙.
+                   </p>
+                   <p>
+                       I've got a thing for <span class="highlight-orange">cats</span> 😼, <span class="highlight-pink">clean UIs</span> 🧠, late-night gaming sessions ⚔️, and good vibes only ✨.
+                   </p>
+                   <p>
+                       Sass? Got it. Chill? Always. Loyal? 100%. <br>
+                       I don't just follow trends — <span class="highlight-pink-strong">I start my own</span> 🚀.
+                   </p>
+                   <p class="text-center mt-6 footer-text">
+                       Mess with the code, not the coder. 😉
+                   </p>
+                </div>
+                 <div class="flex items-center gap-4 mt-8">
+                     <button id="collapse-btn" class="action-button">
+                         Collapse
+                     </button>
+                     <button id="gallery-btn" class="action-button">
+                         Gallery
+                     </button>
+                </div>
+            </div>
+
+            <div id="gallery-card" class="glass-card w-full max-w-md mx-4 rounded-3xl p-8 text-white shadow-2xl flex-col items-center absolute transition-all duration-500 opacity-0 pointer-events-none hidden">
+                <h2 class="text-3xl font-black tracking-wider mb-6 text-center about-me-title">
+                    Hall of Fame 🔥c:\Users\Jyosim\Downloads\pekpek (2).mp4
+                </h2>
+                <div id="gallery-grid" class="w-full h-96 overflow-y-auto grid grid-cols-4 gap-2 pr-2">
+                    <img src="aces1.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces2.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces3.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces4.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces5.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces6.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces7.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces8.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces9.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces10.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces11.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces12.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces13.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces14.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces15.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces16.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces17.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces18.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces19.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                    <img src="aces20.png" alt="Gallery Image" class="rounded-lg object-cover w-full h-full aspect-square">
+                </div>
+                <button id="gallery-collapse-btn" class="action-button mt-8">
+                    Collapse
+                </button>
+            </div>
+
+        </div>
+    </div>
+    
+    <audio id="music-player" src="your_song.mp3" preload="auto" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

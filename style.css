@@ -1,0 +1,273 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Video background styles */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Puts it behind everything */
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the screen */
+}
+
+
+/* Style for the frosted glass effect with a fallback.
+  This creates the semi-transparent, blurred background for the card.
+*/
+.glass-card {
+    background: rgba(23, 23, 23, 0.4); /* Fallback color */
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Keyframes for the floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Class to apply the floating animation */
+.floating-text {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Styles for the intro screen text */
+#intro-text {
+  animation: float 6s ease-in-out infinite, glow 2.5s ease-in-out infinite alternate;
+  z-index: 10; /* Ensure text is above canvas */
+}
+
+/* Keyframes for the glowing effect */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+/* Styles for Badges and Tooltips */
+.badge-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.badge-container .tooltip {
+    visibility: hidden;
+    width: auto;
+    background-color: #111827; /* Tailwind gray-900 */
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%; /* Position the tooltip further above the badge */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap; /* Prevents text from wrapping */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Arrow for the tooltip */
+.badge-container .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #111827 transparent transparent transparent;
+}
+
+.badge-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Styles for Discord Tag */
+.discord-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px; /* Reduced gap */
+    /* Glass Effect Styles */
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff; /* White text for contrast */
+    padding: 4px 8px; /* Reduced padding */
+    border-radius: 16px; /* Pill shape */
+    font-weight: 600; /* semibold */
+    font-size: 13px; /* Reduced font size */
+    line-height: 1;
+}
+
+/* Styles for Avatar Decoration */
+.avatar-decoration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 152px; /* Adjust size to fit your decoration perfectly */
+    height: 152px; /* Adjust size to fit your decoration perfectly */
+}
+
+/* Tailwind's hidden class is used by default, but this provides a fallback */
+.hidden {
+    display: none;
+}
+
+/* Override to remove the main avatar border */
+img[alt="Main Profile Avatar"] {
+    border-width: 0px !important;
+}
+
+/* --- Badge Glow Styles --- */
+
+@keyframes glow-red-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(255, 50, 50, 0.7));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 50, 50, 1));
+  }
+}
+
+@keyframes glow-blue-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(50, 150, 255, 0.7));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(50, 150, 255, 1));
+  }
+}
+
+.glow-red img {
+  animation: glow-red-pulse 3s ease-in-out infinite;
+}
+
+.glow-blue img {
+  animation: glow-blue-pulse 3s ease-in-out infinite;
+}
+
+/* --- Expand/Collapse Button Styles --- */
+.action-button {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 24px;
+    border-radius: 9999px;
+    font-weight: 600;
+    color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* --- Card Transition Styles --- */
+#profile-card.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+}
+#about-card.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    display: flex;
+}
+
+/* NEW: Style for the gallery card visibility */
+#gallery-card.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    display: flex;
+}
+
+
+/* --- About Me Card Styles --- */
+.about-me-title {
+    color: #a78bfa; /* A nice purple, close to the image */
+    text-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
+}
+
+.about-me-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.about-me-text .highlight-cyan { color: #22d3ee; font-weight: 600; }
+.about-me-text .highlight-green { color: #4ade80; font-weight: 600; }
+.about-me-text .highlight-red { color: #f87171; font-weight: 600; }
+.about-me-text .highlight-purple { color: #c084fc; font-weight: 600; }
+.about-me-text .highlight-yellow { color: #facc15; font-weight: 600; }
+.about-me-text .highlight-orange { color: #fb923c; font-weight: 600; }
+.about-me-text .highlight-pink { color: #f472b6; font-weight: 600; }
+.about-me-text .highlight-pink-strong { color: #ec4899; font-weight: 700; }
+
+.about-me-text .footer-text {
+    font-weight: 600;
+    font-style: italic;
+    color: #d8b4fe; /* A lighter purple for the footer */
+}
+
+/* NEW: Styles for the gallery grid */
+#gallery-grid {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+#gallery-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+#gallery-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#gallery-grid::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+#gallery-grid img {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#gallery-grid img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
+}
